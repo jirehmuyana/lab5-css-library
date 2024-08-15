@@ -9,7 +9,9 @@ const router = useRouter()
 const events = ref<Event[] | null>(null)
 const totalEvents = ref(0)
 const hasNextPage = computed(() => {
-  const totalPages = Math.ceil(totalEvents.value / pageSize.value)
+  // const totalPages = Math.ceil(totalEvents.value / pageSize.value)
+  const totalPages = Math.ceil(totalEvents.value / 3)
+
   return page.value < totalPages
 })
 const props = defineProps({
@@ -25,13 +27,24 @@ const props = defineProps({
 const page = computed(() => props.page)
 const pageSize = computed(() => props.pageSize)
 
+// onMounted(() => {
+//   watchEffect(() => {
+//     EventService.getEvents(pageSize.value, page.value, pageSize.value)
+//       .then((response) => {
+//         events.value = response.data
+//         totalEvents.value = parseInt(response.headers['x-total-count'])
+//       })
+//       .catch(() => {
+//         router.push({ name: 'network-error-view'})
+//       })
+//   })
+// })
 onMounted(() => {
   watchEffect(() => {
-    events.value = null
-    EventService.getEvents(pageSize.value, page.value, pageSize.value)
+    EventService.getEvents(3, page.value, pageSize.value)
       .then((response) => {
         events.value = response.data
-        totalEvents.value = parseInt(response.headers['x-total-count'])
+        totalEvents.value = response.headers['x-total-count']
       })
       .catch(() => {
         router.push({ name: 'network-error-view'})
