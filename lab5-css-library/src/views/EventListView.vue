@@ -20,7 +20,7 @@ const props = defineProps({
     required: true
   },
   pageSize: {
-    type:Number,
+    type: Number,
     default: 2
   }
 })
@@ -47,7 +47,7 @@ onMounted(() => {
         totalEvents.value = response.headers['x-total-count']
       })
       .catch(() => {
-        router.push({ name: 'network-error-view'})
+        router.push({ name: 'network-error-view' })
       })
   })
 })

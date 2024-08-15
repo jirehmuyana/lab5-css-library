@@ -7,6 +7,9 @@ const { message } = storeToRefs(store)
 </script>
 
 <template>
+  <!-- <div class="bg-blue-500 text-white p-4">
+    <h1 class="text-2xl font-bold text-center">it's working </h1>
+  </div> -->
   <div id="layout">
     <header>
       <div id="flashMessage" v-if="message">
@@ -50,14 +53,14 @@ h2 {
   font-size: 20px;
 }
 @keyframes yellofade {
-  from{
+  from {
     background-color: yellow;
   }
   to {
     background-color: transparent;
   }
 }
-#flashMessage{
+#flashMessage {
   animation: yellofade 3s ease-in-out;
 }
 .separator {

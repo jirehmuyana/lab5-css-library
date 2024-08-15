@@ -6,8 +6,7 @@ const props = defineProps<{
   event: Event
   id: String
 }>()
-const {event} = toRefs(props)
-
+const { event } = toRefs(props)
 </script>
 <template>
   <p>{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>

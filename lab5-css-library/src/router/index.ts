@@ -19,7 +19,7 @@ const router = createRouter({
       path: '/',
       name: 'event-list-view',
       component: EventListView,
-      props: (route) => ({ 
+      props: (route) => ({
         page: parseInt(route.query.page?.toString() || '1'),
         pageSize: parseInt(route.query.pageSize?.toString() || '2')
       })
@@ -33,20 +33,20 @@ const router = createRouter({
         const id = parseInt(to.params.id as string)
         const eventStore = useEventStore()
         return EventService.getEvent(id)
-        .then((response) => {
-          //need to setup the data for the event
-          eventStore.setEvent(response.data)
-        })
-        .catch((error) => {
-          if (error.response && error.response.status === 404) {
-            return {
-              name: '404-resource-view',
-              params: { resource: 'event' }
+          .then((response) => {
+            //need to setup the data for the event
+            eventStore.setEvent(response.data)
+          })
+          .catch((error) => {
+            if (error.response && error.response.status === 404) {
+              return {
+                name: '404-resource-view',
+                params: { resource: 'event' }
+              }
+            } else {
+              return { name: 'network-error-view' }
             }
-          } else {
-            return { name: 'network-error-view'}
-          }
-        })
+          })
       },
       children: [
         {
@@ -96,18 +96,18 @@ const router = createRouter({
       component: StudentInfoView
     }
   ],
-  scrollBehavior(to, from, savedPosition){
+  scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
     } else {
-    return { top: 0 }
+      return { top: 0 }
+    }
   }
-}
 })
 router.beforeEach(() => {
   nProgress.start()
 })
-router.afterEach(() =>{
+router.afterEach(() => {
   nProgress.done()
 })
 

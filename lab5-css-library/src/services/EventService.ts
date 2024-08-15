@@ -13,11 +13,11 @@ export default {
   getEvents(perPage: Number, page: Number, pageSize: number) {
     return apiClient.get('/events/', {
       params: {
-      _limit: perPage,
-      _page: page,
-      _pageSize: pageSize
-    }
-  })
+        _limit: perPage,
+        _page: page,
+        _pageSize: pageSize
+      }
+    })
   },
   getEvent(id: number) {
     return apiClient.get('/events/' + id)
