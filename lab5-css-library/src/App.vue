@@ -7,6 +7,7 @@ const { message } = storeToRefs(store)
 </script>
 
 <template>
+  <SpeedInsights />
   <!-- <div class="bg-blue-500 text-white p-4">
     <h1 class="text-2xl font-bold text-center">it's working </h1>
   </div> -->
@@ -29,3 +30,4 @@ const { message } = storeToRefs(store)
     <RouterView />
   </div>
 </template>
+
